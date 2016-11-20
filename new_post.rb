@@ -3,9 +3,10 @@ require_relative 'link.rb'
 require_relative 'task.rb'
 require_relative 'memo.rb'
 
-puts "Hello what do you want to write?"
+puts "Hello I'm your smart notepad version 02 + Sqlite"
+puts "What do you want to write?"
 
-choices = Post.post_types
+choices = Post.post_types.keys
 
 choice = -1
 
@@ -19,10 +20,10 @@ end
 
 end
 
-entry = Post.create(choice)
+entry = Post.create(choices[choice])
 
 entry.read_from_console
 
-entry.save
+id = entry.save_to_db
 
-puts "The post has been saved"
+puts "The post has been saved #{id}"
